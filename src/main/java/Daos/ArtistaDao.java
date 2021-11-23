@@ -1,4 +1,4 @@
-package Daos;
+/*package Daos;
 
 import Beans.Artista;
 
@@ -45,4 +45,4 @@ public class ArtistaDao {
         }
         return listaArtistas;
     }
-}
+}*/
