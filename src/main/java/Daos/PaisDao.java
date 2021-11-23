@@ -21,11 +21,7 @@ public class PaisDao extends BaseDao {
                 BPais pais = new BPais();
 
                 pais.setIdPais(rs.getInt(1));
-
-                BContinente continente = new BContinente();
-                continente.setIdContinente(rs.getInt(2));
-                continente.setNombreC(rs.getString(6));
-                pais.setContinente(continente);
+                pais.setContinente(new BContinente(rs.getInt(2),rs.getString(6)));
 
                 pais.setNombre(rs.getString(3));
                 pais.setPoblacion(rs.getInt(4));
