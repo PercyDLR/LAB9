@@ -9,6 +9,8 @@ public class BContinente {
         this.idContinente = idContinente;
     }
 
+    public BContinente(){};
+
     public BContinente(int idContinente, String nombreC) {
         this.idContinente = idContinente;
         this.nombreC = nombreC;

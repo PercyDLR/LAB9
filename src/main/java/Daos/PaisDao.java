@@ -95,4 +95,33 @@ public class PaisDao extends BaseDao {
 
     }
 
+    public BPais obtenerPaisPorId(int idPais) {
+
+        BPais pais = null;
+
+
+        String sql = "select * from pais where idpais = ?";
+
+        try (Connection connection = this.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+
+            preparedStatement.setInt(1, idPais);
+
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    pais = new BPais();
+                    pais.setIdPais(idPais);
+                    pais.setContinente(new BContinente(rs.getInt(2), ""));
+                    pais.setNombre(rs.getString(3));
+                    pais.setPoblacion(rs.getInt(4));
+                    pais.setTamanio(rs.getInt(5));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pais;
+
+    }
+
 }

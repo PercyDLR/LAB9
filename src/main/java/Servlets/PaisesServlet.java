@@ -1,5 +1,7 @@
 package Servlets;
 
+import Beans.BContinente;
+import Beans.BPais;
 import Daos.ContinenteDao;
 import Daos.PaisDao;
 
@@ -12,65 +14,64 @@ import java.io.IOException;
 public class PaisesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filter = request.getParameter("filter") != null ?request.getParameter("filter"): "";
-        String action = request.getParameter("action") != null ?request.getParameter("action"): "listar";
+        String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
+        String action = request.getParameter("action") != null ? request.getParameter("action") : "listar";
 
         PaisDao paisDao = new PaisDao();
-
+        ContinenteDao continenteDao = new ContinenteDao();
 
         RequestDispatcher view;
         switch (action) {
             case "listar":
-                ContinenteDao continenteDao = new ContinenteDao();
 
-                request.setAttribute("listaPaises",paisDao.obtenerListaPaises(filter));
-                request.setAttribute("listaContinentes",continenteDao.obtenerListaContinentes());
+
+                request.setAttribute("listaPaises", paisDao.obtenerListaPaises(filter));
+                request.setAttribute("listaContinentes", continenteDao.obtenerListaContinentes());
 
                 view = request.getRequestDispatcher("listaPaises.jsp");
                 view.forward(request, response);
 
                 break;
 
-/*
+
             case "crear":
 
-                request.setAttribute("listaBandas",bandaDao.obtenerListaBandas() );
-                RequestDispatcher view2 = request.getRequestDispatcher("crearArtista.jsp");
+                request.setAttribute("listaContinentes", continenteDao.obtenerListaContinentes());
+                RequestDispatcher view2 = request.getRequestDispatcher("crearPais.jsp");
                 view2.forward(request, response);
                 break;
 
             case "editar":
-                String idAStr = request.getParameter("idA")!= null? request.getParameter("idA"):"";
-                int idA = Integer.parseInt(idAStr);
-                Artista artista = artistaDao.obtenerArtistaPorId(idA);
+                String idPStr = request.getParameter("idP")!= null? request.getParameter("idP"):"";
+                int idP = Integer.parseInt(idPStr);
+                BPais pais = paisDao.obtenerPaisPorId(idP);
 
-                if (artista != null){
-                    request.setAttribute("artista", artista);
-                    request.setAttribute("listaBandas",bandaDao.obtenerListaBandas() );
+                if (pais != null){
+                    request.setAttribute("pais", pais);
+                    request.setAttribute("listaContinentes",continenteDao.obtenerListaContinentes() );
 
-                    view = request.getRequestDispatcher("editarArtista.jsp");
+                    view = request.getRequestDispatcher("editarPais.jsp");
                     view.forward(request, response);
                 }else {
-                    response.sendRedirect(request.getContextPath() + "/artistas");
+                    response.sendRedirect(request.getContextPath() + "/paises");
                 }
                 break;
+
             case "eliminar":
-                String idBorrarStr = request.getParameter("idA")!= null? request.getParameter("idA"):"";
+                String idBorrarStr = request.getParameter("idP")!= null? request.getParameter("idP"):"";
                 int idBorrar = Integer.parseInt(idBorrarStr);
 
-                Artista artistaB = artistaDao.obtenerArtistaPorId(idBorrar);
+                BPais paisB = paisDao.obtenerPaisPorId(idBorrar);
 
-                if (artistaB!=null){
+                if (paisB!=null){
                     try {
-                        artistaDao.eliminarArtista(idBorrar);
-                        response.sendRedirect(request.getContextPath() + "/artistas");
+                        paisDao.eliminarPais(idBorrar);
+                        response.sendRedirect(request.getContextPath() + "/paises");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-
-
-                break;*/
+                break;
         }
 
     }
@@ -78,37 +79,72 @@ public class PaisesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action") != null ? request.getParameter("action") : "";
-        String filter = request.getParameter("filter") != null ?request.getParameter("filter"): "";
+        String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
 
         PaisDao paisDao = new PaisDao();
 
         RequestDispatcher view;
 
-        switch (action){
+        switch (action) {
             case "listar":
 
-                response.sendRedirect(request.getContextPath() + "/paises?filter="+filter);
+                response.sendRedirect(request.getContextPath() + "/paises?filter=" + filter);
                 break;
-                /*
-            case "update":
 
-                String nombreArtista = request.getParameter("nombreArtista") != null ? request.getParameter("nombreArtista") : "";
-                String idBandaStr = request.getParameter("idBanda") != null ? request.getParameter("idBanda") : "";
-                int idBanda = Integer.parseInt(idBandaStr);
-                int idArtista = Integer.parseInt(idArtistaStr);
-                artistaDao.actualizarArtista(idArtista,nombreArtista, idBanda);
-                response.sendRedirect(request.getContextPath() + "/artistas");
+            case "editar":
+
+                String idPEStr = request.getParameter("idPais")!= null? request.getParameter("idPais"):"";
+                String nombrePE = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
+                String idContinenteEStr = request.getParameter("cont") != null ? request.getParameter("cont") : "";
+                String poblacionEStr = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
+                String tamEStr = request.getParameter("tam") != null ? request.getParameter("tam") : "";
+
+                int idPE = Integer.parseInt(idPEStr);
+                int idContE = Integer.parseInt(idContinenteEStr);
+                int poblacionE = Integer.parseInt(poblacionEStr);
+                float tamE = Float.parseFloat(tamEStr);
+
+                BContinente continenteE = new BContinente();
+                continenteE.setIdContinente(idContE);
+
+                BPais paisE = new BPais();
+                paisE.setIdPais(idPE);
+                paisE.setNombre(nombrePE);
+                paisE.setContinente(continenteE);
+                paisE.setPoblacion(poblacionE);
+                paisE.setTamanio(tamE);
+
+                paisDao.actualizarPais(paisE);
+
+                response.sendRedirect(request.getContextPath() + "/paises");
 
                 break;
             case "crear":
+                System.out.println("entra en crear");
 
-                String nombreArtistaC = request.getParameter("nombreArtista") != null ? request.getParameter("nombreArtista") : "";
-                String idBandaCStr = request.getParameter("idBanda") != null ? request.getParameter("idBanda") : "";
-                int idBandaC = Integer.parseInt(idBandaCStr);
-                artistaDao.crearArtista(nombreArtistaC, idBandaC);
-                response.sendRedirect(request.getContextPath() + "/artistas");
+                String nombreP = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
+                String idContinenteStr = request.getParameter("cont") != null ? request.getParameter("cont") : "";
+                String poblacionStr = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
+                String tamStr = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
 
-                break;*/
+                int idCont = Integer.parseInt(idContinenteStr);
+                int poblacion = Integer.parseInt(poblacionStr);
+                float tam = Float.parseFloat(tamStr);
+
+                BContinente continente = new BContinente();
+                continente.setIdContinente(idCont);
+
+                BPais pais = new BPais();
+                pais.setNombre(nombreP);
+                pais.setContinente(continente);
+                pais.setPoblacion(poblacion);
+                pais.setTamanio(tam);
+
+                paisDao.crearPais(pais);
+
+                response.sendRedirect(request.getContextPath() + "/paises");
+
+                break;
         }
     }
 }
