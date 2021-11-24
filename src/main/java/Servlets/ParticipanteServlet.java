@@ -79,13 +79,13 @@ public class ParticipanteServlet extends HttpServlet {
             int id_pais = Integer.parseInt(request.getParameter("idPais"));
             //validaciones
             // solo letras
-            if(!nombre.matches("[a-zA-z]*")){
+            if(!nombre.matches("^[a-zA-Z\\s]*$")){
                 //System.out.println("el nombre no debe tener numeros");
                 mensaje = "digito de manera incorrecta el nombre";
                 todo_claro=false;
                 accion = "crear";
             }
-            if(!apellido.matches("[a-zA-z]*")){
+            if(!apellido.matches("^[a-zA-Z\\s]*$")){
                 //System.out.println("el apellido no debe tener numeros");
                 mensaje = "digito de manera incorrecta el apellido";
                 todo_claro=false;
@@ -120,13 +120,13 @@ public class ParticipanteServlet extends HttpServlet {
             int edadE = Integer.parseInt(request.getParameter("edad"));
             String generoE = request.getParameter("genero");
             int id_paisE = Integer.parseInt(request.getParameter("idPais"));
-            if(!nombreE.matches("[a-zA-z]*")){
+            if(!nombreE.matches("^[a-zA-Z\\s]*$")){
                 //System.out.println("el nombre no debe tener numeros");
                 mensajeE = "digito de manera incorrecta el nombre";
                 edicion_correcta= false;
                 accion="editar";
             }
-            if(!apellidoE.matches("[a-zA-z]*")){
+            if(!apellidoE.matches("^[a-zA-Z\\s]*$")){
                 //System.out.println("el apellido no debe tener numeros");
                 mensajeE = "digito de manera incorrecta el apellido";
                 edicion_correcta=false;
