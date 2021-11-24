@@ -20,7 +20,7 @@ public class UniversidadServlet extends HttpServlet {
         PaisDao pd = new PaisDao();
 
         String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
-        ArrayList<BPais> listaPaises = pd.obtenerListaPaises();
+        ArrayList<BPais> listaPaises = pd.obtenerListaPaises("");
 
         switch(action){
             case "listar":
