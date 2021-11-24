@@ -23,7 +23,7 @@
                 <form method="POST" action="<%=request.getContextPath()%>/universidades?action=editar&id=<%=infoUniversidad.getIdUniversidad()%>">
                     <div class="mb-3">
                         <label for="pais" class="form-label">Pais</label>
-                        <select class="form-select" aria-label="Seleccionar Pais" id="pais" name="idPais" required>
+                        <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Pais" id="pais" name="idPais" required>
                             <%for(BPais pais : listaPaises){
                                 if(pais.getIdPais()==infoUniversidad.getPais().getIdPais()){%>
                                     <option selected value="<%=pais.getIdPais()%>"><%=pais.getNombre()%></option>

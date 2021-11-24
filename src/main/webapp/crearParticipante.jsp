@@ -37,7 +37,7 @@
         <form method="POST" action="<%=request.getContextPath()%>/participantes?action=crear">
             <div class="mb-3">
                 <label for="pais" class="form-label">Pais</label>
-                <select class="form-select" aria-label="Seleccionar Pais" id="pais" name="idPais" required>
+                <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Pais" id="pais" name="idPais" required>
                     <option selected>---- Seleccionar un Pais ----</option>
                     <%for(BPais pais : listaPaises){%>
                     <option value="<%=pais.getIdPais()%>"><%=pais.getNombre()%></option>
@@ -58,7 +58,7 @@
             </div>
             <div class="mb-3">
                 <label for= "genero" class="form-label">Genero</label>
-                 <select class="form-select" aria-label="Seleccionar Genero" id="genero" name="genero" required>
+                 <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Genero" id="genero" name="genero" required>
                      <option selected>---- Seleccione su género ----</option>
                      <option value="hombre">Hombre</option>
                      <option value="mujer">Mujer</option>

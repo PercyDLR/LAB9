@@ -28,12 +28,12 @@
             <div class="text-white">
                 <form method="POST" action="<%=request.getContextPath()%>/alumnos?action=crear&idUniversidad=<%=infoUniversidad.getIdUniversidad()%>">
                     <div class="mb-3">
-                        <label for="participante" class="form-label">Pais</label>
-                        <select class="form-select" aria-label="Seleccionar Pais" id="participante" name="idParticipante" required>
+                        <label for="participante" class="form-label">Participante</label>
+                        <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Participante" id="participante" name="idParticipante" required>
                             <option selected>---- Seleccionar un Participante ----</option>
 
                             <%for(BParticipante p : listaParticipantes){%>
-                                <option value="<%=p.getIdParticipante()%>"><%=p.getNombreP()%></option>
+                                <option value="<%=p.getIdParticipante()%>"><%=p.getNombreP()+" "+p.getApellidP()%></option>
                             <%}%>
 
                         </select>

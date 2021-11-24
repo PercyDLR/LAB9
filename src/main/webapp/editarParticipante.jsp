@@ -62,7 +62,7 @@
             </div>
             <div class="mb-3">
                 <label for= "genero" class="form-label">Genero</label>
-                <select class="form-select" aria-label="Seleccionar Genero" id="genero" name="genero" required>
+                <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Genero" id="genero" name="genero" required>
                     <option selected value="<%=participanteInfo.getGenero()%>"><%=participanteInfo.getGenero()%></option>
                     <option value="hombre">Hombre</option>
                     <option value="mujer">Mujer</option>

@@ -22,9 +22,9 @@
             <div class="text-white">
                 <form method="POST" action="<%=request.getContextPath()%>/alumnos?action=editar&idUniversidad=<%=infoUniversidad.getIdUniversidad()%>&idParticipante=<%=infoAlumno.getIdParticipante()%>">
                     <div class="mb-3">
-                        <label for="participante" class="form-label">Pais</label>
-                        <select class="form-select" aria-label="Seleccionar Pais" id="participante" name="idParticipante" disabled>
-                            <option selected value="<%=infoAlumno.getIdParticipante()%>"><%=infoAlumno.getNombreP()%></option>
+                        <label for="participante" class="form-label">Participante</label>
+                        <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Pais" id="participante" name="idParticipante" disabled>
+                            <option selected value="<%=infoAlumno.getIdParticipante()%>"><%=infoAlumno.getNombreP()+" "+infoAlumno.getApellidP()%></option>
                         </select>
                     </div>
 

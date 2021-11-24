@@ -21,11 +21,13 @@
           <form method="POST" action="<%=request.getContextPath()%>/universidades?action=crear">
             <div class="mb-3">
               <label for="pais" class="form-label">Pais</label>
-              <select class="form-select" aria-label="Seleccionar Pais" id="pais" name="idPais" required>
+              <select class="form-select btn btn-outline-secondary" aria-label="Seleccionar Pais" id="pais" name="idPais" required>
                 <option selected>---- Seleccionar un Pais ----</option>
+
                 <%for(BPais pais : listaPaises){%>
                   <option value="<%=pais.getIdPais()%>"><%=pais.getNombre()%></option>
                 <%}%>
+
               </select>
             </div>
             <div class="mb-3">
