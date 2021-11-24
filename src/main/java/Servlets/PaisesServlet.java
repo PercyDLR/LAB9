@@ -14,6 +14,8 @@ import java.io.IOException;
 public class PaisesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+
         String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
         String action = request.getParameter("action") != null ? request.getParameter("action") : "listar";
 
@@ -78,6 +80,8 @@ public class PaisesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         String action = request.getParameter("action") != null ? request.getParameter("action") : "";
         String filter = request.getParameter("filter") != null ? request.getParameter("filter") : "";
 
@@ -90,7 +94,6 @@ public class PaisesServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + "/paises?filter=" + filter);
                 break;
-
 
             case "editar":
 

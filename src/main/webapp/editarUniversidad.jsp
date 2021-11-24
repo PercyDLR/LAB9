@@ -41,10 +41,6 @@
                         <input type="number" class="form-control" id="ranking" name="ranking" value="<%=infoUniversidad.getRanking()%>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="numAlumnos" class="form-label">Cantidad de Alumnos</label>
-                        <input type="text" class="form-control" id="numAlumnos" name="numAlumnos" value="<%=infoUniversidad.getNumAlumnos()%>" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="foto" class="form-label">URL de la Foto</label>
                         <input type="text" class="form-control" id="foto" name="foto" value="<%=infoUniversidad.getFoto()%>" required>
                     </div>

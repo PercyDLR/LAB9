@@ -126,4 +126,27 @@ public class ParticipanteDao extends BaseDao{
         }
         return estudiante;
     }
+
+    public ArrayList<BParticipante> participantesSinUniversidad(int idPais){
+
+        ArrayList<BParticipante> participantes = new ArrayList<>();
+        String sql="select * from participante p\n" +
+                "left join alumno a on (a.idparticipante=p.idparticipante)\n" +
+                "where a.idparticipante is null and p.idpais="+idPais;
+
+        try(Connection connection = this.getConnection();
+            Statement  stmt = connection.createStatement();
+            ResultSet rs  = stmt.executeQuery(sql)){
+
+            while(rs.next()){
+                BPais pais = new BPais();
+                pais.setNombre(rs.getString(6));
+                participantes.add(new BParticipante(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),pais));
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return participantes;
+    }
 }

@@ -65,7 +65,7 @@ public class UniversidadServlet extends HttpServlet {
 
                 // Elimina a todos los alumnos de la Universidad
                 for(BAlumno alumno : alumnosEnUniversidad){
-                    ad.eliminarAlumno(alumno.getIdParticipante());
+                    ad.borrarAlumno(alumno.getIdParticipante());
                 }
                 int idPais = ud.infoUniversidad(idUniversidad1).getPais().getIdPais();
 
@@ -110,11 +110,11 @@ public class UniversidadServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         UniversidadDao ud = new UniversidadDao();
+        AlumnoDao ad = new AlumnoDao();
 
         BUniversidad uni = new BUniversidad();
         uni.setNombre(request.getParameter("nombre"));
         uni.setRanking(Integer.parseInt(request.getParameter("ranking")));
-        uni.setNumAlumnos(Integer.parseInt(request.getParameter("numAlumnos")));
         uni.setFoto(request.getParameter("foto"));
 
         BPais pais = new BPais();
@@ -125,13 +125,18 @@ public class UniversidadServlet extends HttpServlet {
         String msg;
         switch(request.getParameter("action")){
             case "crear":
+                uni.setNumAlumnos(0);
                 msg = ud.crearUniversidad(uni) ? "re" : "rne";
 
                 response.sendRedirect(request.getContextPath()+"/universidades?resultado="+msg);
                 break;
 
             case "editar":
-                uni.setIdUniversidad(Integer.parseInt(request.getParameter("id")));
+                int idUniversidad = Integer.parseInt(request.getParameter("id"));
+
+                uni.setIdUniversidad(idUniversidad);
+                uni.setNumAlumnos(ad.listarAlumnos(2,idUniversidad).size());
+
                 msg = ud.editarUniversidad(uni) ? "ee" : "ene";
 
                 response.sendRedirect(request.getContextPath()+"/universidades?resultado="+msg);

@@ -9,6 +9,21 @@ import java.util.ArrayList;
 
 public class UniversidadDao extends BaseDao{
 
+    public void cambiarNumEstudiantes(int idUniversidad, int valor){
+
+        String sql = "update universidad set numAlumnos = numAlumnos+("+valor+")\n"+
+                "where iduniversidad="+idUniversidad;
+
+        try(Connection conn = this.getConnection();
+            Statement pstmt = conn.createStatement()) {
+
+            pstmt.executeUpdate(sql);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public int universidadesEnPais(){
         int cantidad = 900;
         String sql = "select count(*) from universidad\n" +

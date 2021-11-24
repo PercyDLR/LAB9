@@ -5,12 +5,12 @@
 
 <html>
     <jsp:include page="/static/head.jsp">
-        <jsp:param name="title" value="Agregar Universidad"/>
+        <jsp:param name="title" value="Crear País"/>
     </jsp:include>
     <body>
         <div class='container'>
             <jsp:include page="/includes/navbar.jsp">
-                <jsp:param name="page" value="universidades"/>
+                <jsp:param name="page" value="paises"/>
             </jsp:include>
 
             <div class="pb-5 pt-4 px-3 titlecolor">

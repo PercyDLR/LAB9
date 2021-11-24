@@ -61,7 +61,7 @@
             <th><a class="btn btn-dark" href="<%=request.getContextPath()%>/universidades?filter=u.ranking">RANKING</a></th>
             <th><a class="btn btn-dark" href="<%=request.getContextPath()%>/universidades?filter=u.numAlumnos">#ALUMNOS</a></th>
             <th><a class="btn btn-dark" href="#">FOTO</a></th>
-            <th colspan="2"><a class="btn btn-dark" href="#">OPCIONES</a></th>
+            <th colspan="3"><a class="btn btn-dark" href="#">OPCIONES</a></th>
           </thead>
           <%
             for (BUniversidad u : listaUniversidades) {
@@ -95,6 +95,7 @@
             <td><img src="<%=u.getFoto()%>" alt="Foto de la Universidad" width="100%" height="100px"/></td>
             <th><a class="btn btn-primary" href="<%=request.getContextPath()%>/universidades?action=editar&id=<%=u.getIdUniversidad()%>">Editar</a></th>
             <th><a class="btn btn-danger" href="<%=request.getContextPath()%>/universidades?action=eliminar&id=<%=u.getIdUniversidad()%>">Eliminar</a></th>
+            <th><a class="btn btn-info" href="<%=request.getContextPath()%>/alumnos?idUniversidad=<%=u.getIdUniversidad()%>">Ver Alumnos</a></th>
           </tr>
           <%
             }

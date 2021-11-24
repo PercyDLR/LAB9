@@ -12,7 +12,7 @@
             </jsp:include>
             <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <h1 class='text-light'>Bienvenido, este es un ejemplo de tabla:</h1>
+                    <h1 class='text-light'>Consorcio Mundial de Universidades VIP</h1>
                 </div>
             </div>
             <div class="tabla">
@@ -21,84 +21,25 @@
                         <tr>
                             <th>#</th>
                             <th>NOMBRE</th>
-                            <th>ROL</th>
                             <th>CORREO</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-                            <td>1
-                            </td>
-                            <td>Stuardo Lucho
-                            </td>
-                            <td>Profesor
-                            </td>
-                            <td>stuardo.lucho@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2
-                            </td>
-                            <td>Oscar Diaz
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>diaz.oa@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3
-                            </td>
-                            <td>Mario Gustavo
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a2015@pucp.edu.pe
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>4
-                            </td>
-                            <td>Rodrigo Adauto
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
+                            <td>1</td>
+                            <td>Percy De La Rosa Vera</td>
+                            <td>a201192265@pucp.edu.pe</td>
                         </tr>
                         <tr>
-                            <td>4
-                            </td>
-                            <td>Álvaro Burga
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
+                            <td>2</td>
+                            <td>Agustin Vizcarra Lizarbe</td>
+                            <td>a20181454@pucp.edu.pe</td>
                         </tr>
                         <tr>
-                            <td>4
-                            </td>
-                            <td>Josué López
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4
-                            </td>
-                            <td> Alejandro Macedo
-                            </td>
-                            <td>JP
-                            </td>
-                            <td>a20160679@pucp.edu.pe
-                            </td>
+                            <td>3</td>
+                            <td>Diana Sologuren</td>
+                            <td>sologurenr.d@pucp.edu.pe</td>
                         </tr>
 
                     </tbody>

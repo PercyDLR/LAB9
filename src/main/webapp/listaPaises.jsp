@@ -12,7 +12,7 @@
     <body>
         <div class='container'>
             <jsp:include page="/includes/navbar.jsp">
-                <jsp:param name="page" value="universidades"/>
+                <jsp:param name="page" value="paises"/>
             </jsp:include>
             <div class="pb-5 pt-4 px-3 titlecolor">
                 <div class="col col-md-8 col-sm-6">

@@ -5,7 +5,7 @@
 <jsp:useBean id="mensaje" scope="request" type="java.lang.String" class="java.lang.String"/>
 <html>
 <jsp:include page="/static/head.jsp">
-    <jsp:param name="title" value="Agregar nuevo participante"/>
+    <jsp:param name="title" value="Editar participante"/>
 </jsp:include>
 <body>
 <div class='container'>

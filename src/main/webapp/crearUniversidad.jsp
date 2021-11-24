@@ -14,7 +14,7 @@
 
         <div class="pb-5 pt-4 px-3 titlecolor">
           <div class="col-md-8 col-sm-6">
-            <h1 class='text-light'>Agregar un nuevo País</h1>
+            <h1 class='text-light'>Agregar una nueva Universidad</h1>
           </div>
         </div>
         <div class="text-white">
@@ -35,10 +35,6 @@
             <div class="mb-3">
               <label for="ranking" class="form-label">Ranking</label>
               <input type="number" class="form-control" id="ranking" name="ranking" required>
-            </div>
-            <div class="mb-3">
-              <label for="numAlumnos" class="form-label">Cantidad de Alumnos</label>
-              <input type="text" class="form-control" id="numAlumnos" name="numAlumnos" required>
             </div>
             <div class="mb-3">
               <label for="foto" class="form-label">URL de la Foto</label>

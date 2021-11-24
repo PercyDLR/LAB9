@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">Consorcio Mundial de Universidades</a>
+    <a class="navbar-brand" href="<%=request.getContextPath()%>/">Consorcio Mundial de Universidades</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

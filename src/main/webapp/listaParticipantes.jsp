@@ -9,7 +9,7 @@
 <body>
 <div class='container'>
     <jsp:include page="/includes/navbar.jsp">
-        <jsp:param name="page" value="participante"/>
+        <jsp:param name="page" value="participantes"/>
     </jsp:include>
     <div class="pb-5 pt-4 px-3 titlecolor">
         <div class="col-md-8 col-sm-6">
