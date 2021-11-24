@@ -37,13 +37,14 @@ public class ParticipanteDao extends BaseDao{
     }
     public ArrayList<BParticipante> listarParticipante(){
         ArrayList<BParticipante> participantes = new ArrayList<>();
-
+        String sql="select p.idparticipante,p.nombre,p.apellido,p.edad,p.genero,c.nombre from participante p inner join pais c on (c.idpais=p.idpais)";
         try(Connection connection = this.getConnection();
             Statement  stmt = connection.createStatement();
-            ResultSet rs  = stmt.executeQuery("select * from participante")){
-
+            ResultSet rs  = stmt.executeQuery(sql)){
                 while(rs.next()){
-                    participantes.add(new BParticipante(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),new BPais(rs.getInt(6))));
+                    BPais pais = new BPais();
+                    pais.setNombre(rs.getString(6));
+                    participantes.add(new BParticipante(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),pais));
                 }
         }catch(SQLException e){
             e.printStackTrace();
