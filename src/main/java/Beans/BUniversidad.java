@@ -9,6 +9,12 @@ public class BUniversidad {
     private int numAlumnos;
     private String foto;
 
+    public BUniversidad() {}
+
+    public BUniversidad(int idUniversidad) {
+        this.idUniversidad = idUniversidad;
+    }
+
     public String getNombre() {
         return nombre;
     }

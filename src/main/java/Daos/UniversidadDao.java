@@ -9,6 +9,24 @@ import java.util.ArrayList;
 
 public class UniversidadDao extends BaseDao{
 
+    public int universidadesEnPais(){
+        int cantidad = 900;
+        String sql = "select count(*) from universidad\n" +
+                "where idpais=3;";
+
+        try(Connection conn = this.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+
+            if(rs.next()){
+                cantidad = rs.getInt(1);
+            }
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return cantidad;
+    }
+
     public BUniversidad infoUniversidad(int id){
         BUniversidad u = new BUniversidad();
 
@@ -128,7 +146,7 @@ public class UniversidadDao extends BaseDao{
         return false;
     }
 
-    public boolean borrarUniversidad(BUniversidad u){
+    public boolean borrarUniversidad(int id){
 
         String sql = "delete from universidad\n"+
                 "where iduniversidad = ?";
@@ -136,7 +154,7 @@ public class UniversidadDao extends BaseDao{
         try(Connection conn = this.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(1,u.getIdUniversidad());
+            pstmt.setInt(1,id);
 
             pstmt.executeUpdate();
             return true;
