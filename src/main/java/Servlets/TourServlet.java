@@ -1,4 +1,4 @@
-package Servlets;
+/*package Servlets;
 
 import Beans.Tour;
 import Daos.TourDao;
@@ -27,4 +27,4 @@ public class TourServlet extends HttpServlet {
         RequestDispatcher view =request.getRequestDispatcher("listaTours.jsp");
         view.forward(request,response);
     }
-}
+}*/

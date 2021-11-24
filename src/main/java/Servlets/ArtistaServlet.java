@@ -1,3 +1,4 @@
+/*
 package Servlets;
 
 import Beans.Artista;
@@ -33,3 +34,4 @@ public class ArtistaServlet extends HttpServlet {
 
     }
 }
+*/

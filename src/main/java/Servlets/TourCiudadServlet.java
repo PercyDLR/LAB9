@@ -1,4 +1,4 @@
-package Servlets;
+/*package Servlets;
 
 import Beans.TPC;
 import Daos.TourDao;
@@ -25,4 +25,4 @@ public class TourCiudadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-}
+}*/
