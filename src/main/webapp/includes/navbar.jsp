@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link <%=request.getParameter("page").equals("")? "active": "" %>" href="<%=request.getContextPath()%>/paises">Paises</a>
+                <a class="nav-link <%=request.getParameter("page").equals("paises")? "active": "" %>" href="<%=request.getContextPath()%>/paises">Paises</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <%=request.getParameter("page").equals("bandas")? "active": "" %>" href="<%=request.getContextPath()%>/participantes">Participantes</a>
+                <a class="nav-link <%=request.getParameter("page").equals("participantes")? "active": "" %>" href="<%=request.getContextPath()%>/participantes">Participantes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <%=request.getParameter("page").equals("tpc")? "active": "" %>" href="<%=request.getContextPath()%>/universidades">Universidades</a>
+                <a class="nav-link <%=request.getParameter("page").equals("universidades")? "active": "" %>" href="<%=request.getContextPath()%>/universidades">Universidades</a>
             </li>
         </ul>
     </div>

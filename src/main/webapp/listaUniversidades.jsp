@@ -15,6 +15,7 @@
         <div class="col-md-8 col-sm-6">
           <h1 class='text-light'>Universidades Miembro</h1>
         </div>
+        <a class="btn btn-success" href="<%=request.getContextPath()%>/universidades?action=crear">Nueva Universidad</a>
       </div>
       <div class="tabla">
         <table class="table table-transparent table-hover text-center">

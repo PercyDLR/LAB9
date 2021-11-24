@@ -9,6 +9,40 @@ import java.util.ArrayList;
 
 public class UniversidadDao extends BaseDao{
 
+    public BUniversidad infoUniversidad(int id){
+        BUniversidad u = new BUniversidad();
+
+        String sql = "select u.iduniversidad, u.nombre, u.ranking, u.numAlumnos, u.foto, c.idcontinente, c.nombre, p.idpais, p.nombre, p.poblacion, p.tamanio from universidad u\n" +
+                "inner join pais p on (u.idpais=p.idpais)\n" +
+                "inner join continente c on (p.idcontinente=c.idcontinente)\n" +
+                "where u.iduniversidad="+id;
+
+        try(Connection conn = this.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+
+            if(rs.next()){
+
+                u.setIdUniversidad(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                u.setRanking(rs.getInt(3));
+                u.setNumAlumnos(rs.getInt(4));
+                u.setFoto(rs.getString(5));
+
+                BPais p = new BPais();
+                p.setContinente(new BContinente(rs.getInt(6),rs.getString(7)));
+                p.setIdPais(rs.getInt(8));
+                p.setNombre(rs.getString(9));
+                p.setPoblacion(rs.getInt(10));
+                p.setTamanio(rs.getInt(11));
+                u.setPais(p);
+            }
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return u;
+    }
+
     public ArrayList<BUniversidad> listarUniversidades(String filtro){
 
         ArrayList<BUniversidad> listaUniversidades = new ArrayList<>();
