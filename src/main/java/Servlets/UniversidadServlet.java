@@ -121,6 +121,7 @@ public class UniversidadServlet extends HttpServlet {
         pais.setIdPais(Integer.parseInt(request.getParameter("idPais")));
         uni.setPais(pais);
 
+
         String msg;
         switch(request.getParameter("action")){
             case "crear":
