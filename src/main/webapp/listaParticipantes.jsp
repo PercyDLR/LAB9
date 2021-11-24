@@ -1,7 +1,6 @@
 <%@ page import="Beans.BParticipante" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="listaparticipantes" scope="request" type="java.util.ArrayList<Beans.BParticipante>"/>
-
+<jsp:useBean id="listaparticipantes" scope="request" type="java.util.ArrayList<Beans.BParticipante>" class="java.util.ArrayList"/>
 <html>
 <jsp:include page="/static/head.jsp">
     <jsp:param name="title" value="participantes"/>
