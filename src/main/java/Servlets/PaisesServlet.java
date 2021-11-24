@@ -91,6 +91,7 @@ public class PaisesServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/paises?filter=" + filter);
                 break;
 
+
             case "editar":
 
                 String idPEStr = request.getParameter("idPais")!= null? request.getParameter("idPais"):"";
