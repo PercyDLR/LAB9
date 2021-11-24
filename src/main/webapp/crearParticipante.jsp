@@ -1,7 +1,7 @@
 <%@ page import="Beans.BPais" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaPaises" scope="request" type="java.util.ArrayList<Beans.BPais>"/>
-
+<jsp:useBean id="mensaje" scope="request" type="java.lang.String" class="java.lang.String"/>
 <html>
 <jsp:include page="/static/head.jsp">
     <jsp:param name="title" value="Agregar nuevo participante"/>
@@ -16,7 +16,23 @@
         <div class="col-md-8 col-sm-6">
             <h1 class='text-light'>Agregar un nuevo participante</h1>
         </div>
+    </div
+    <%
+        if(!mensaje.equals("")){
+            String tipo = null;
+            if(mensaje.equalsIgnoreCase("se edito de manera correcta")||mensaje.equalsIgnoreCase("se registro de manera correcta")||mensaje.equalsIgnoreCase("borrado exitoso")){
+                tipo = "alert-success";
+            }else{
+                tipo= "alert-danger";
+            }
+    %>
+    <div class="container">
+    <div class="alert <%=tipo%> alert-dismissible fade show" role="alert">
+        <%= mensaje%>
     </div>
+    </div>
+    <%}%>
+    <div class="container">
     <div class="text-white">
         <form method="POST" action="<%=request.getContextPath()%>/participantes?action=crear">
             <div class="mb-3">
@@ -54,6 +70,7 @@
                 <button type="submit" class="btn btn-success">Crear</button>
             </div>
         </form>
+    </div>
     </div>
 </div>
 </body>

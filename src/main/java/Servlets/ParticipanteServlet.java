@@ -21,10 +21,8 @@ public class ParticipanteServlet extends HttpServlet {
         PaisDao paisDao = new PaisDao();
         ArrayList<BPais> paises = paisDao.obtenerListaPaises("");
         String action = request.getParameter("action") == null ? "listar" : request.getParameter("action");
-        String mensaje = request.getParameter("resultado");
-
+        String mensaje = request.getParameter("resultado")== null ?  "" : request.getParameter("resultado");
         switch (action) {
-
             case "listar":
                 ArrayList<BParticipante> listaparticipante = participanteDao.listarParticipante(-1);
                 request.setAttribute("mensaje",mensaje);
@@ -104,7 +102,7 @@ public class ParticipanteServlet extends HttpServlet {
                 //validacion edad
                 if(edad<18){
                     //System.out.println("no se puede registrar a menores de edad");
-                    mensaje = "debe tener como minimo 18 años el participante";
+                    mensaje = "debe tener como minimo 18";
                     todo_claro = false;
                     accion = "crear";
                 }
@@ -124,7 +122,7 @@ public class ParticipanteServlet extends HttpServlet {
             case "editar":
                 boolean edicion_correcta = true;
                 accion = "listar";
-                String mensajeE="se editó de manera correcta";
+                String mensajeE="se edito de manera correcta";
                 String nombreE =request.getParameter("nombre");
                 String apellidoE =request.getParameter("apellido");
                 int edadE = Integer.parseInt(request.getParameter("edad"));
@@ -145,7 +143,7 @@ public class ParticipanteServlet extends HttpServlet {
                 //validacion edad
                 if(edadE<18){
                     //System.out.println("no se puede registrar a menores de edad");
-                    mensajeE = "debe tener como minimo 18 años el participante";
+                    mensajeE = "debe tener como minimo 18 ";
                     edicion_correcta=false;
                     accion="editar";
                 }

@@ -1,6 +1,7 @@
 <%@ page import="Beans.BParticipante" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="listaparticipantes" scope="request" type="java.util.ArrayList<Beans.BParticipante>" class="java.util.ArrayList"/>
+<jsp:useBean id="mensaje" scope="request" type="java.lang.String" class="java.lang.String"/>
 <html>
 <jsp:include page="/static/head.jsp">
     <jsp:param name="title" value="participantes"/>
@@ -16,6 +17,19 @@
         </div>
         <a class="btn btn-success" href="<%=request.getContextPath()%>/participantes?action=crear">Añadir nuevo participante</a>
     </div>
+    <%
+        if(!mensaje.equals("")){
+            String tipo = null;
+            if(mensaje.equalsIgnoreCase("se edito de manera correcta")||mensaje.equalsIgnoreCase("se registro de manera correcta")||mensaje.equalsIgnoreCase("borrado exitoso")){
+                tipo = "alert-success";
+            }else{
+                tipo= "alert-danger";
+            }
+            %>
+    <div class="alert <%=tipo%> alert-dismissible fade show" role="alert">
+        <%= mensaje%>
+    </div>
+    <%}%>
     <div class="tabla">
         <table class="table table-dark table-transparent table-hover">
             <thead>
@@ -28,10 +42,11 @@
             <th colspan="2">OPCIONES</th>
             </thead>
             <%
+                int i=0;
                 for(BParticipante p : listaparticipantes) {
             %>
             <tr>
-                <td><%=p.getIdParticipante()%></td>
+                <td><%=i+=1%></td>
                 <td><%=p.getNombreP()%></td>
                 <td><%=p.getApellidP()%></td>
                 <td><%=p.getEdad()%></td>
