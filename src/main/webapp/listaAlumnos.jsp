@@ -17,6 +17,7 @@
             <div class="pb-5 pt-4 px-3 titlecolor">
                 <h1 class='text-light'>Alumnos de <%=infoUniversidad.getNombre()%></h1>
                 <a class="btn btn-success" href="<%=request.getContextPath()%>/alumnos?action=crear&idUniversidad=<%=infoUniversidad.getIdUniversidad()%>">Nuevo Alumno</a>
+                <a class="btn btn-info" href="<%=request.getContextPath()%>/universidades">Regresar a a la Vista de Universidades</a>
             </div>
 
             <div class="tabla">

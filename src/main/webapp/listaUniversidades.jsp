@@ -80,7 +80,7 @@
                   color = "warning";
                   break;
                 case 5:
-                  color = "alert";
+                  color = "danger";
                   break;
                 case 6:
                   color = "light";
