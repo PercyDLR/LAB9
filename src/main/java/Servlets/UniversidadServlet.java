@@ -2,9 +2,11 @@ package Servlets;
 
 import Beans.BAlumno;
 import Beans.BPais;
+import Beans.BParticipante;
 import Beans.BUniversidad;
 import Daos.AlumnoDao;
 import Daos.PaisDao;
+import Daos.ParticipanteDao;
 import Daos.UniversidadDao;
 
 import javax.servlet.*;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 public class UniversidadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+
         UniversidadDao ud = new UniversidadDao();
         PaisDao pd = new PaisDao();
         RequestDispatcher view;
@@ -54,6 +58,8 @@ public class UniversidadServlet extends HttpServlet {
 
             case "eliminar":
                 AlumnoDao ad = new AlumnoDao();
+                ParticipanteDao pad = new ParticipanteDao();
+
                 int idUniversidad1 = Integer.parseInt(request.getParameter("id"));
                 ArrayList<BAlumno> alumnosEnUniversidad = ad.listarAlumnos(2,idUniversidad1);
 
@@ -61,14 +67,27 @@ public class UniversidadServlet extends HttpServlet {
                 for(BAlumno alumno : alumnosEnUniversidad){
                     ad.eliminarAlumno(alumno.getIdParticipante());
                 }
+                int idPais = ud.infoUniversidad(idUniversidad1).getPais().getIdPais();
+
                 // Si el pais se queda sin universidades se borra también
                 if(ud.universidadesEnPais()==1){
-                    // pd.borrarPais(ud.infoUniversidad(idUniversidad1).getPais().getIdPais())
+
+
+                    // 1. Obtiene los participantes en el país
+                    ArrayList<BParticipante> participantesEnPais = pad.listarParticipante(idPais);
+                    // 2. Los elimina a todos de la DB
+                    for(BParticipante pa : participantesEnPais){
+                        pad.eliminarParticipante(pa.getIdParticipante());
+                    }
+                    // 3. ELimina la universidad
                     if(ud.borrarUniversidad(idUniversidad1)){
                         request.setAttribute("resultado","be");
                     }else{
                         request.setAttribute("resultado","bne");
                     }
+                    // Elimina el pais
+                    pd.eliminarPais(idPais);
+
                 // Sa aún le quedan universidades, solo se borra la universidad
                 }else if(ud.borrarUniversidad(idUniversidad1)){
                     request.setAttribute("resultado","be");
@@ -88,6 +107,8 @@ public class UniversidadServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         UniversidadDao ud = new UniversidadDao();
 
         BUniversidad uni = new BUniversidad();

@@ -80,7 +80,7 @@ public class PaisDao extends BaseDao {
         }
     }
 
-    public void eliminarCancion(int idPais) {
+    public void eliminarPais(int idPais) {
 
         String sql = "DELETE FROM pais WHERE idpais = ?";
 
