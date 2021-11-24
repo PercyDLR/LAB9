@@ -5,6 +5,10 @@ public class BContinente {
     private int idContinente;
     private String nombreC;
 
+    public BContinente(int idContinente) {
+        this.idContinente = idContinente;
+    }
+
     public BContinente(int idContinente, String nombreC) {
         this.idContinente = idContinente;
         this.nombreC = nombreC;
