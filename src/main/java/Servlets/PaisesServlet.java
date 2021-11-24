@@ -129,7 +129,7 @@ public class PaisesServlet extends HttpServlet {
                 String nombreP = request.getParameter("nombre") != null ? request.getParameter("nombre") : "";
                 String idContinenteStr = request.getParameter("cont") != null ? request.getParameter("cont") : "";
                 String poblacionStr = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
-                String tamStr = request.getParameter("poblacion") != null ? request.getParameter("poblacion") : "";
+                String tamStr = request.getParameter("tam") != null ? request.getParameter("tam") : "";
 
                 int idCont = Integer.parseInt(idContinenteStr);
                 int poblacion = Integer.parseInt(poblacionStr);
